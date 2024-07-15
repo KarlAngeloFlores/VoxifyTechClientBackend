@@ -11,7 +11,7 @@ btnHome.addEventListener("click", () => {
 function readRepliedMessages() {
     
 
-    fetch("http://localhost:8001/message/readReplied", {
+    fetch("https://voxifytechclient.onrender.com/message/readReplied", {
         method: "GET",
     })
     .then(response => {
@@ -49,7 +49,7 @@ function readRepliedMessages() {
 
 
 function deleteMessage(messageId) {
-    fetch("http://localhost:8001/message/deleteMessage", {
+    fetch("https://voxifytechclient.onrender.com/message/deleteMessage", {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
