@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
-const port = process.env.PORT || 8001;
-const mongourl = process.env.MONGO_URL;
+const port = 8001;
+const mongourl = "mongodb+srv://KarlAngelo:m4wME0vlUcaHiPlC@cluster0.pjwjyj6.mongodb.net/VoxifyTech";
 
 
 const messageRoute = require("./routes/MessageRoutes");
@@ -22,11 +22,6 @@ app.use("/message", messageRoute);
 
 const adminRoute = require("./routes/AdminRoutes");
 app.use("/admin", adminRoute);
-
-
-//http://localhost:8001/admin/loginAdmin
-//http://localhost:8001/message/readMessage
-
 
 /**connect to database */
 mongoose.connect(mongourl)
