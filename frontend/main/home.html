@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxifyTech Dashboard</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    
+
+</head>
+<body>
+
+    <nav class = "navigation w-full h-16 bg-white sticky top-0 flex items-center justify-center shadow-md">
+        <div class = "logo w-[1200px] flex justify-between lg:mx-0 mx-4"> <!--NAVIGATION CONTAINER-->
+            <div class = "font-extrabold font-poppins">VoxifyTech</div>
+            <ul class = "nav-menu">
+                <li><a class = "btnHome font-bold py-2 px-2 bg-gray-200 cursor-pointer cursor-default">Home</a></li>
+                <li><a class = "btnMessaged font-bold py-2 px-2 cursor-pointer">Messaged</a></li>
+                <li><a class = "btnLogout font-bold transition duration-500 ease-out bg-red-600 px-4 py-2 rounded-sm text-white hover:bg-red-700 active:bg-red-900 hover:cursor-pointer">Logout</a></li>
+                
+            </ul>    
+                <svg class="bar-icon w-4 cursor-pointer mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#000000" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+        </div>
+    </nav>
+
+    <main class="w-full"> <!--main class-->
+        <div class="message-container max-w-7xl mx-auto border p-4">
+            
+        </div> <!--container-->
+    </main>
+
+
+    <!--modal for reply email   -->
+    <div id="replyModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white shadow-md p-4 w-1/2">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold">Reply</h2>
+                <button onclick="closeModal()" class="text-red-600">&times;</button>
+            </div>
+            <p class="font-semibold" id="replyEmail"></p>
+            <textarea id="replyMessage" class="w-full p-2 border-gray-300 border rounded-sm mt-4" rows="4" placeholder="Type your reply here..."></textarea>
+            <div class="flex mt-4 justify-end">
+                <button onclick="sendReply()" class="p-2 bg-blue-600 hover:bg-blue-800 active:bg-blue-900 text-white rounded-sm">Send Reply</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
