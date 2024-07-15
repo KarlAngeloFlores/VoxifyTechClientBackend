@@ -5,7 +5,7 @@ const btnLogin = document.querySelector(".btnLogin");
 btnLogin.addEventListener("click", () => {
     console.log(emailInput.value);
     console.log(passwordInput.value);
-    fetch("http://localhost:8001/admin/loginAdmin", {
+    fetch("https://voxifytechclient.onrender.com/admin/loginAdmin", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

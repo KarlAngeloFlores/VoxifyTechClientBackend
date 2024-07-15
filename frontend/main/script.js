@@ -33,7 +33,7 @@ function toggleMenu() {
 const messageContainer = document.querySelector(".message-container");
 
 function deleteMessage(messageId) {
-    fetch("http://localhost:8001/message/deleteMessage", {
+    fetch("https://voxifytechclient.onrender.com/message/deleteMessage", {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ function deleteMessage(messageId) {
 }
 
 function updateStatus(messageId) {
-    fetch("http://localhost:8001/message/updateStatus", {
+    fetch("https://voxifytechclient.onrender.com/message/updateStatus", {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ function updateStatus(messageId) {
 }
 
 function readMessages() {
-    fetch("http://localhost:8001/message/readMessage", {
+    fetch("https://voxifytechclient.onrender.com/message/readMessage", {
         method: "GET",
     })
     .then(response => {
