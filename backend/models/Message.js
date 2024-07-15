@@ -13,6 +13,10 @@ const MessageSchema = new mongoose.Schema({
     message: {
         type: String,
         required: true
+    },
+    status: {
+        type: Boolean,
+        default: false
     }
 
 }); /**end bracket */

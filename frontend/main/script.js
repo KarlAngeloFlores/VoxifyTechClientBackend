@@ -1,13 +1,17 @@
 const openMenuButton = document.querySelector(".bar-icon");
 const navMenu = document.querySelector(".nav-menu");
 const btnLogout = document.querySelector(".btnLogout");
+const btnMessaged = document.querySelector(".btnMessaged");
 
+
+btnMessaged.addEventListener("click", () => {
+    window.location.href = "messaged.html"
+});
 
 btnLogout.addEventListener("click", () => {
     sessionStorage.clear();
     window.location.href = "index.html";
 })
-
 
 navMenu.style.maxHeight = "0px";
 openMenuButton.addEventListener("click", () => {
@@ -22,6 +26,7 @@ function toggleMenu() {
     }
 }
 
+//http://localhost:8001/message/readReplied
 //http://localhost:8001/message/readMessage
 //http://localhost:8001/message/deleteMessage
 
@@ -48,6 +53,29 @@ function deleteMessage(messageId) {
     })
     .catch(error => {
         console.error("Error Deleting Message:", error);
+    });
+}
+
+function updateStatus(messageId) {
+    fetch("http://localhost:8001/message/updateStatus", {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ messageId: messageId })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        console.log(data);
+        readMessages();
+    })
+    .catch(error => {
+        console.error('There was a problem with the update operation:', error);
     });
 }
 
@@ -104,7 +132,6 @@ function readMessages() {
         document.getElementById('replyMessage').value = '';
     }
 
-
 const serviceID = "service_kq1s4tp"
 const templateID = "template_ck1xbd9"
 emailjs.init("tHYZQ2tbvWe-QIlej"); //initializing API
@@ -112,6 +139,8 @@ emailjs.init("tHYZQ2tbvWe-QIlej"); //initializing API
     function sendReply() {
         const replyMessage = document.getElementById('replyMessage').value; //the message
         if (replyMessage.trim() !== "") {
+
+            updateStatus(currentReplyId);
             var params = {
                 to: currentReplyEmail,
                 replyto: "User",
@@ -120,23 +149,25 @@ emailjs.init("tHYZQ2tbvWe-QIlej"); //initializing API
 
             emailjs.send(serviceID, templateID, params)
             .then(res => {
-                alert("Email Sent");
+                
+                alert("Email Sent", currentReplyId);
             })
             .catch();
-            //console.log(`Reply to ${currentReplyEmail}: ${replyMessage}`);
             closeModal();
         } else {
             alert("Please enter a reply message.");
         }
     }
 
-
-    if(sessionStorage.getItem("isLoggedIn")) {
-        readMessages();
-    } else {
-        alert("log in first");
+    function renderPage() {
+        if(sessionStorage.getItem("isLoggedIn")) {
+            readMessages();
+        } else {
+            alert("log in first");
+        }
     }
+            
+renderPage();
 
 
-console.log(sessionStorage.getItem("isLoggedIn"))
-
+//console.log(sessionStorage.getItem("isLoggedIn"))

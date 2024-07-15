@@ -1,9 +1,8 @@
+/*NAVIGATION*/
 
 .bar-icon {
     display: none;
 }
-
-/*NAVIGATION*/
 
 .nav-menu {
     display: flex;
@@ -12,6 +11,7 @@
 
 @media screen and (max-width: 1024px) {
     
+
 }  
 
 
@@ -23,7 +23,6 @@
 .bar-icon {
     display: block;
 }
-
 
 .nav-menu {
     flex-direction: column; 
@@ -40,19 +39,16 @@
     transition: all 0.5s ease;
 }
 
-
+.nav-menu li {
+    padding: 30px;
+    
+}
 
 }
 
 @media screen and (max-width: 640px) {
-    .about-us {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    flex-direction: column;
     
 }   
 
-    
 
-}
+
