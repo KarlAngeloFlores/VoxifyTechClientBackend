@@ -1,16 +1,6 @@
-const btnHome = document.querySelector(".btnHome");
 const messageContainer = document.querySelector(".message-container");
-
-btnHome.addEventListener("click", () => {
-    window.location.href = "home.html"
-});
-
-//http://localhost:8001/message/readReplied
-//http://localhost:8001/message/updateStatus
-
 function readRepliedMessages() {
     
-
     fetch("https://voxifytechclient.onrender.com/message/readReplied", {
         method: "GET",
     })
@@ -46,7 +36,6 @@ function readRepliedMessages() {
     });
 
 }
-
 
 function deleteMessage(messageId) {
     fetch("https://voxifytechclient.onrender.com/message/deleteMessage", {

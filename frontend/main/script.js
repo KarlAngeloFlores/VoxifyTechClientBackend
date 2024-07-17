@@ -1,37 +1,4 @@
-const openMenuButton = document.querySelector(".bar-icon");
-const navMenu = document.querySelector(".nav-menu");
-const btnLogout = document.querySelector(".btnLogout");
-const btnMessaged = document.querySelector(".btnMessaged");
-
-
-btnMessaged.addEventListener("click", () => {
-    window.location.href = "messaged.html"
-});
-
-btnLogout.addEventListener("click", () => {
-    sessionStorage.clear();
-    window.location.href = "index.html";
-})
-
-navMenu.style.maxHeight = "0px";
-openMenuButton.addEventListener("click", () => {
-    toggleMenu();
-});
-
-function toggleMenu() {
-    if (navMenu.style.maxHeight === "0px") {
-        navMenu.style.maxHeight = "800px";
-    } else {
-        navMenu.style.maxHeight = "0px";
-    }
-}
-
-//http://localhost:8001/message/readReplied
-//http://localhost:8001/message/readMessage
-//http://localhost:8001/message/deleteMessage
-
 const messageContainer = document.querySelector(".message-container");
-
 function deleteMessage(messageId) {
     fetch("https://voxifytechclient.onrender.com/message/deleteMessage", {
         method: "DELETE",
@@ -168,6 +135,3 @@ emailjs.init("tHYZQ2tbvWe-QIlej"); //initializing API
     }
             
 renderPage();
-
-
-//console.log(sessionStorage.getItem("isLoggedIn"))
