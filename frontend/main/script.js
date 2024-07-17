@@ -134,4 +134,9 @@ emailjs.init("tHYZQ2tbvWe-QIlej"); //initializing API
         }
     }
             
-renderPage();
+    function startPolling(interval = 5000) {
+        readMessages(); // Initial fetch
+        setInterval(readMessages, interval); // Fetch every 3 seconds (5000ms)
+    }
+    
+    startPolling();
